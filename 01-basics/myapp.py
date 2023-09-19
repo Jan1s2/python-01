@@ -4,7 +4,7 @@ def getPass() -> str:
         password:str = input("Zadej heslo: ")
         password_chk:str = input("Znovu zadej heslo: ")
         if password != password_chk:
-            print("Hesla se nechodují!")
+            print("Hesla se neschodují!")
         else:
             pass_ready = password
     return pass_ready
@@ -48,10 +48,10 @@ def getProbability() -> float:
 
 
 '''
-Note: eval() not implemented -> __import__("os").system("echo A")
+Note: eval() not implemented -> __import__("os").system("hostname")
 '''
-password = getPass()
-proxy = getProxy()
-repo = getRepo()
+password:str = getPass()
+proxy:str = getProxy()
+repo:int = getRepo()
 groups = getGroups()
 prob = getProbability()
