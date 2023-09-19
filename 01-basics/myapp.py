@@ -10,7 +10,7 @@ def getPass() -> str:
     return pass_ready
 
 def getProxy() -> str:
-    proxy = input("Zadejte proxy: ")
+    proxy:str = input("Zadejte proxy: ")
     print("Použitý proxy server: {proxy}".format(proxy = proxy))
     return proxy
 
@@ -21,29 +21,29 @@ def getRepo() -> int:
           2 - us
           3 - de
           """)
-    repo = input("Repozitář: ")
-    if int(repo) < 1 or int(repo) > 3:
+    repo:int = int(input("Repozitář: "))
+    if repo < 1 or repo > 3:
         print("Invalid repo!")
         return 0
     print("Repo: ", repo)
-    return int(repo)
+    return repo
 
 def getGroups() -> list[str]:
     print("""
           Skupiny:
           """)
     groups:list[str] = []
-    groups[0] = input("Napište primární skupinu: ")
-    groups[1] = input("Napište sekundární skupinu: ")
+    groups.append(input("Napište primární skupinu: "))
+    groups.append(input("Napište sekundární skupinu: "))
     print("""
-          Primární skupina: {2}
-          Sekundární skupina: {1}
+          Primární skupina: {1}
+          Sekundární skupina: {0}
           """.format(groups[1], groups[0]))
     return groups
 
 def getProbability() -> float:
     probability:float = float(input("Zadejte pravděpodobnost chyby: "))
-    print("Pravděpodobnost: f4.2" %probability)
+    print("Pravděpodobnost: %3.2f" %probability)
     return probability
 
 
