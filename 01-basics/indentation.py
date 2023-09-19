@@ -50,3 +50,15 @@ aspoň jednu podmínku if a funkci print(). Dodržte správné odsazování kód
 Do konzole vypište nejprve docstring vaší funkce a potom zavolejte funkci samotnou.   
 """
 
+def odd(x:int):
+    """
+    prints modulus of numbers in range of 0 to x with 5 as modulo
+    @param x int
+    """
+    if x > 0:
+        for i in range(0,x):
+            print(f"{i} % 5 == {i % 2}")
+    else:
+        print("Invalid x")
+print(odd.__doc__)
+odd(5)
