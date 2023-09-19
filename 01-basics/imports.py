@@ -76,4 +76,10 @@ K řešení prvního úkolu je možné doporučit importovat interní modul date
 Řešení dalších dvou úkolů můžete odvodit z příkladů v dokumentaci k externímu modulu dateutil - viz https://pypi.org/project/python-dateutil/
 """
 import datetime
-from dateutil import easter
+from dateutil.easter import easter
+from dateutil.rrule import rrule,YEARLY,SU
+now = datetime.datetime.now()
+for i in range(1,6):
+    print(easter(now.year + i))
+print(rrule(YEARLY, dtstart=now, bymonth=12, bymonthday=24, byweekday=SU)[0].year)
+
