@@ -1,4 +1,9 @@
+import re
+
 def getPass() -> str:
+    """
+        Gets and checks the password from user
+    """
     pass_ready:str = ""
     while(pass_ready == ""):
         password:str = input("Zadej heslo: ")
@@ -10,11 +15,17 @@ def getPass() -> str:
     return pass_ready
 
 def getProxy() -> str:
+    """
+        Gets the proxy server for connections
+    """
     proxy:str = input("Zadejte proxy: ")
     print("Použitý proxy server: {proxy}".format(proxy = proxy))
     return proxy
 
 def getRepo() -> int:
+    """
+        Asks user for repository
+    """
     print("""
           Repozitáře:
           1 - cz
@@ -29,6 +40,9 @@ def getRepo() -> int:
     return repo
 
 def getGroups() -> list[str]:
+    """
+        Allows user to input groups
+    """
     print("""
           Skupiny:
           """)
@@ -42,16 +56,27 @@ def getGroups() -> list[str]:
     return groups
 
 def getProbability() -> float:
+    """
+        Test for C-like output formatting
+    """
     probability:float = float(input("Zadejte pravděpodobnost chyby: "))
     print("Pravděpodobnost: %3.2f" %probability)
     return probability
 
+def calculate() -> None:
+    """
+        Calculates the input
+    """
+    form:str = input("DEBUG: Zadejte matematický výraz: ")
+    # Checks whether the untrusted input actually is in base format
+    if(re.match(r"^\d+ ?[+*/\-] ?\d+$", form) != None):
+        print("Výsledek: ", eval(form))
+    else:
+        print("Nevalidní vstup")
 
-'''
-Note: eval() not implemented -> __import__("os").system("hostname")
-'''
 password:str = getPass()
 proxy:str = getProxy()
 repo:int = getRepo()
 groups:list[str] = getGroups()
 prob:float = getProbability()
+calculate()
