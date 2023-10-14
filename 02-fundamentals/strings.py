@@ -163,7 +163,7 @@ funkční kód, tím lepší).
 '''
 
 def conv_date(date:str)->str:
-   return f"{date[date.rfind('.') + 1:].strip()}-{date[date.find('.') + 1:date.rfind('.')].strip()}-{date[:date.find('.')].strip()}"
+   return f"{date[date.rfind('.') + 1:].strip().zfill(4)}-{date[date.find('.') + 1:date.rfind('.')].strip().zfill(2)}-{date[:date.find('.')].strip().zfill(2)}"
             
 def conv_format(text:str, js:bool=False)->str:
    return re.sub("[^a-zA-Z0-9_]", "", (text.title() if js else text.lower().replace(" ", "_")).lstrip('0123456789'))
@@ -172,10 +172,8 @@ def gen_passwd(num:int=1)->list[str]:
    passwords:list[str] = []
    for _ in range(0,num):
       passwd:str = ""
-      for _ in range(0,):
-         passwd += chr(randint(ord('A'), ord('Z')))
-      for _ in range(0,3):
-         passwd += chr(randint(ord('a'), ord('z')))
+      for i in range(0,6):
+         passwd += chr(randint(ord('A' if i < 3 else 'a'), ord('Z' if i < 3 else 'z')))
       ran:int = randint(0,3)
       passwd += "-" if ran == 0 else "/" if ran == 1 else "+" if ran == 2 else "*"
       for _ in range(0,3):
@@ -183,6 +181,6 @@ def gen_passwd(num:int=1)->list[str]:
       passwords.append(passwd)
    return passwords
 
-print(conv_date("12. 10. 2020"))
-print(conv_format("5Toto je testovaci Notace5!", False))
+print(conv_date("3. 2.1"))
+print(conv_format("5Toto je testovaci Notace5!", True))
 print(gen_passwd(10))
