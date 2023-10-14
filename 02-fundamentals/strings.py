@@ -1,4 +1,7 @@
 # Znakové řetězce mohou být uvozeny jednoduchými i dvojitými uvozovkami
+from random import randint
+import re
+
 course_name = "Python programming"
 
 '''
@@ -158,3 +161,28 @@ funkční kód, tím lepší).
 3. Vytvořte funkci, která vygeneruje náhodná hesla pro počet osob zadaný v parametru tak, aby heslo začínalo
    3 velkými písmeny, pokračovalo 3 malými písmeny, jedním speciálním znakem (-/+*) a končilo 3 náhodnými číslicemi.
 '''
+
+def conv_date(date:str)->str:
+   return f"{date[date.rfind('.') + 1:].strip()}-{date[date.find('.') + 1:date.rfind('.')].strip()}-{date[:date.find('.')].strip()}"
+            
+def conv_format(text:str, js:bool=False)->str:
+   return re.sub("[^a-zA-Z0-9_]", "", (text.title() if js else text.lower().replace(" ", "_")).lstrip('0123456789'))
+
+def gen_passwd(num:int=1)->list[str]:
+   passwords:list[str] = []
+   for _ in range(0,num):
+      passwd:str = ""
+      for _ in range(0,):
+         passwd += chr(randint(ord('A'), ord('Z')))
+      for _ in range(0,3):
+         passwd += chr(randint(ord('a'), ord('z')))
+      ran:int = randint(0,3)
+      passwd += "-" if ran == 0 else "/" if ran == 1 else "+" if ran == 2 else "*"
+      for _ in range(0,3):
+         passwd += str(randint(0,9))
+      passwords.append(passwd)
+   return passwords
+
+print(conv_date("12. 10. 2020"))
+print(conv_format("5Toto je testovaci Notace5!", False))
+print(gen_passwd(10))
