@@ -33,6 +33,12 @@ Některé objekty mohou mít explicitně přiřazené jméno, obecně označovan
 #? b) identitu objektu (jeho adresu v paměti)
 #? Ukažte to na příkladech proměnných students_count, rating, is_published a vypište výstupy do konzole
 
+# a) type()
+# b) id()
+print(f"Stud. count: Type: {type(students_count)}; Identity: {id(students_count)}")
+print(f"Rating: Type: {type(rating)}; Identity: {id(rating)}")
+print(f"Published: Type: {type(is_published)}; Identity: {id(is_published)}")
+
 # Numerické operátory
 # print(10 + 3)
 # print(10 - 3)
@@ -72,6 +78,17 @@ hexadecimal = 0x12c #Hexadecimal Literal
 #? Pro toto binární číslo proveďte nejprve bitový posun o 2 bity vpravo, poté vypište výsledek v desítkové soustavě
 #? Proveďte bitový součin hexadecimálního čísla "1A" a vašeho binárního čísla a opět vypište v desítkové soustavě
 #? Výsledek zobrazte jako formátovaný řetězec - např. "Binární součin čísla 0b11010 a 0b10110101 je 0b10000"
+
+'''& AND; | OR; ~ NOT; ^ XOR; >> right shift; << left shift'''
+
+myself_binary = 0b10111101
+print(myself_binary)
+right_shift = myself_binary >> 2
+print(right_shift)
+binary_mult = myself_binary & 0x1a
+print(binary_mult)
+
+print(f"Binary multiplication of {bin(0x1a)} and {bin(myself_binary)} is {bin(binary_mult)}")
 
 
 '''Python plně podporuje operace v plovoucí řádové čárce (tj. desetinná čísla). 
