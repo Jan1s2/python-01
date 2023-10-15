@@ -10,7 +10,8 @@ EARTH_GRAVITY = 9.807 #? normální pozemské tíhové zrychlení
 MOON_GRAVITY = 1.62 #? měsíční gravitace
 SPEED_OF_LIGHT = 299792458 #? rychlost světla ve vakuu
 SPEED_OF_SOUND = 343 #? rychlost zvuku při teplotě 20 °C v suchém vzduchu
-EARTH_MASS = 5.972 * 10**24
+GRAVITATIONAL_CONSTANT = 6.6743e-11
+EARTH_MASS = 5.972e24
 
 ''' 
 Úkol:
@@ -38,7 +39,7 @@ def moon_to_mass(weight):
     '''Calculates the mass from weight on the moon'''
     return weight / MOON_GRAVITY
 
-def gravity(constant:float, mass_one:float, mass_two:float, distance:float):
+def gravity(mass_one:float, mass_two:float, distance:float):
     '''Gravity equation; all masses are in kg
     Params:
         constant (float) gravitational constant
@@ -46,14 +47,14 @@ def gravity(constant:float, mass_one:float, mass_two:float, distance:float):
         mass_two (float) mass of object two
         distance (float) distance between the centers of mass of the two objects (m)
         '''
-    return (constant * mass_one * mass_two) / distance ** 2
+    return (GRAVITATIONAL_CONSTANT * mass_one * mass_two) / distance ** 2
 
-def earth_gravity(mass, distance=0):
+def earth_gravity(mass, distance:float=6378000):
     '''Calls gravity with earth in mind
     mass (float) mass of the object (kg)
-    distance (float) distance between the object and earth (m)
+    distance (float) distance between the object and earth - default is radius of earth (m)
     '''
-    return gravity(EARTH_GRAVITY, EARTH_MASS, mass, distance)
+    return gravity(EARTH_MASS, mass, distance)
 
 def velocity_to_light(velocity:float) -> float:
     '''Compare velocity to speed of light'''
