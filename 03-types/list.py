@@ -13,6 +13,9 @@ https://macek.sandbox.cz/texty/python-tutorial-cz/tut/node5.html
 '''
 Příklady různých seznamů v Pythonu:
 '''
+from math import fabs
+
+
 print('Příklady různých seznamů v Pythonu:\n-----------------------------------')
 
 # Seznam tvořený znaky
@@ -56,11 +59,11 @@ print(f'\tVypíše každý druhý prvek ze seznamu letters: {letters[::2]}')
 # ??? 1. cvičení ???
 # Doplňte podle zadání chybějící u následujících tří výpisů
 print('\n1. Cvičení\n***********************************************************************************************')
-print(f'\tVypíše poslední 2 prvky ze seznamu numbers: ???')
-print(f'\tVypíše každý sudý prvek ze seznamu letters: ???')
-print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: ???')
-print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: ???')
-print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: ???')
+print(f'\tVypíše poslední 2 prvky ze seznamu numbers: {numbers[-2:]}')
+print(f'\tVypíše každý sudý prvek ze seznamu letters: {letters[1::2]}')
+print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: {mixed_list[:-2]}')
+print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: {mixed_list[4]["name"]}')
+print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: {mixed_list[3][1][-2]}')
 print('***********************************************************************************************\n')
 # ??? Konec 1. cvičení ???
 
@@ -286,7 +289,28 @@ from random import randint
 
 print(f'\n*************************************\nCvičení 2\n*************************************')
 
+hundreds = []
+for i in range(1,2001):
+    if i % 200 == 0:
+        hundreds.append(i)
+print(hundreds)
+ascii = [chr(randint(ord('A'), ord('Z'))) for _ in range(0,50)]
+# for i in range(0,50):
+    # r = chr(randint(ord('A'), ord('Z')))
+    # ascii.append(r)
+print(ascii)
+unique = [i for i in ascii if ascii.count(i) == 1]
+# for i in ascii:
+    # if ascii.count(i) == 1:
+        # unique.append(i)
+print(unique)
 
+hundreds= hundreds[3:-3]
+print(hundreds)
+
+ascii = ascii[:len(hundreds)]
+combine = [(hundreds[i], ascii[i]) for i in range(0,len(hundreds))]
+print(combine)
 
 # ??? 3. cvičení ???
 # a) Přidejte do listu persons ještě n-tice (tuples) dalších 2 žen a 2 mužů.
@@ -298,3 +322,20 @@ print(f'\n*************************************\nCvičení 2\n******************
 # Záznamy budou seřazeny podle věku (sestupně).
 
 print(f'\n*************************************\nCvičení 3\n*************************************')
+persons.extend([("Pavel", 50, "muž"),
+               ("Antonín", 25, "muž"),
+               ("Karolína", 40, "žena"),
+               ("Gabriela", 90, "žena")])
+print(persons)
+women = [person for person in persons if person[2] == "žena"]
+for woman in women:
+    woman = woman[0]
+    print(woman)
+    print('-'* len(woman))
+ipersons = [i for i in persons if i[0].find('i') != -1]
+print(ipersons)
+csv_txt = ""
+for row in ipersons:
+    csv_txt += ','.join(map(str, row)) + '\n'
+print(csv_txt)
+    
