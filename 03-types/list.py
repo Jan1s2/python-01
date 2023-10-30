@@ -332,10 +332,11 @@ for woman in women:
     woman = woman[0]
     print(woman)
     print('-'* len(woman))
-ipersons = [i for i in persons if i[0].find('i') != -1]
+ipersons = [i for i in persons if i[0].lower().find('i') != -1]
 print(ipersons)
 csv_txt = ""
-for row in ipersons:
-    csv_txt += ','.join(map(str, row)) + '\n'
+for idx,row in enumerate(sorted(ipersons, key=lambda p: p[1])):
+    csv_txt += str(idx) + ';'
+    csv_txt += ';'.join(map(str, row)) + '\n'
 print(csv_txt)
     
