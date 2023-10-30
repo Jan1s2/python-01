@@ -94,3 +94,33 @@ child3          Linus               2011
 ---------------------------------------------
 Počet záznamů: 3
 '''
+
+movies = {
+    "Doctor Who": {
+        "genre": "sci-fi",
+        "year": 1996
+    },
+    "Terminator": {
+        "genre": "sci-fi",
+        "year": 1984
+    },
+    "The Godfather": {
+        "genre": "drama",
+        "year": 1972
+    }
+}
+print(movies)
+movies["Dark Knight"] = {
+            "genre": "action",
+            "year": 2008
+            }
+print(movies)
+del movies['Terminator']
+print('---------------------------------------------')
+print('movie            genre              year     ')
+print('---------------------------------------------')
+for movie in movies.items():
+    print(f"{movie[0]}\t{movie[1].get('genre')}\t\t\t{movie[1].get('year')}")
+
+print('---------------------------------------------')
+print(f"Počet záznamů: {len(movies)}")
