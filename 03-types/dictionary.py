@@ -120,7 +120,7 @@ print('---------------------------------------------')
 print('movie            genre              year     ')
 print('---------------------------------------------')
 for movie in movies.items():
-    print(f"{movie[0]}\t{movie[1].get('genre')}\t\t\t{movie[1].get('year')}")
+    print(f"{movie[0]}\t{movie[1]['genre']}\t\t\t{movie[1]['year']}")
 
 print('---------------------------------------------')
 print(f"Počet záznamů: {len(movies)}")
